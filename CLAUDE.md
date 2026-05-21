@@ -1,31 +1,31 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+本文件为 Claude Code (claude.ai/code) 在此仓库中工作时提供指导。
 
-## Project Overview
+## 项目概述
 
-This repo hosts static HTML pages for 烙馍网 (luomor.com), a content platform run since 2015. The pages serve as the default nginx index page.
+此仓库托管烙馍网（luomor.com）的静态 HTML 页面，作为 Nginx 的默认首页。网站自 2015 年起运营至今。
 
-## File Structure
+## 文件结构
 
-| File | Description |
-|------|-------------|
-| `index.html` | Main intro page — "AI与生活" theme, dark tech aesthetic |
-| `index1.html` | Alternate page — 烙馍 food culture theme, warm red/orange palette |
-| `docs/log.txt` | Change log from AI sessions |
-| `docs/README.md` | Original prompt that generated the pages |
-| `centos/` | CentOS default HTML docs (reference material, not part of the site) |
+| 文件 | 说明 |
+|------|------|
+| `index.html` | 主页面 — "AI与生活" 主题，深色科技风 |
+| `index1.html` | 备选页面 — 烙馍饮食文化主题，暖色调 |
+| `docs/log.txt` | AI 会话生成记录 |
+| `docs/README.md` | 生成页面的原始提示词 |
+| `centos/` | CentOS 默认 HTML 文档（参考资料，非站点内容） |
 
-## Development
+## 开发
 
-- **No build step** — pages are plain HTML + inline CSS, no frameworks or dependencies
-- **To preview**: open `index.html` directly in a browser, or serve with `python3 -m http.server`
-- **To deploy**: commit and push; nginx serves `index.html` from this directory
+- **无构建流程** — 页面为纯 HTML + 内联 CSS，无框架、无依赖
+- **本地预览**：直接在浏览器中打开 `index.html`，或使用 `python3 -m http.server` 启动服务
+- **部署**：提交并推送，Nginx 从此目录提供 `index.html`
 
-## Conventions
+## 编码规范
 
-- Single-file pages with inline `<style>` — no external CSS/JS files
-- Pure HTML + CSS, no JavaScript framework or build tooling
-- Responsive design with `@media (max-width: 768px)` breakpoints
-- Chinese language content (`lang="zh-CN"`)
-- Emoji/unicode entities used for decorative icons (e.g., `&#129652;`)
+- 单文件页面，样式内联在 `<style>` 中，无外部 CSS/JS 文件
+- 纯 HTML + CSS，无 JavaScript 框架或构建工具
+- 响应式设计，使用 `@media (max-width: 768px)` 断点
+- 页面语言为中文（`lang="zh-CN"`）
+- 使用 Emoji/Unicode 实体作为装饰图标（如 `&#129652;`）
