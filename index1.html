@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>烙馍网 - 传承千年麦香</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      color: #333;
+      background: #faf8f5;
+      line-height: 1.8;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #c0392b 0%, #e74c3c 50%, #f39c12 100%);
+      color: #fff;
+      text-align: center;
+      padding: 5em 2em 4em;
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -40px;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background: #faf8f5;
+      border-radius: 50% 50% 0 0;
+    }
+    header h1 {
+      font-size: 3em;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.3em;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    }
+    header p {
+      font-size: 1.2em;
+      opacity: 0.92;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Nav */
+    nav {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 2em;
+      padding: 1em 0;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      padding: 0.4em 1em;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    nav a:hover { background: #fef3e2; color: #c0392b; }
+
+    /* Sections */
+    section {
+      max-width: 960px;
+      margin: 3em auto;
+      padding: 0 2em;
+    }
+    h2 {
+      font-size: 2em;
+      color: #c0392b;
+      margin-bottom: 1em;
+      position: relative;
+      display: inline-block;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: #f39c12;
+      border-radius: 2px;
+    }
+
+    /* Intro */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      margin-top: 1.5em;
+    }
+    .intro-grid .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 2em;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      transition: transform 0.2s;
+    }
+    .intro-grid .card:hover { transform: translateY(-4px); }
+    .card h3 { color: #e67e22; margin-bottom: 0.5em; font-size: 1.2em; }
+    .card .emoji { font-size: 2.5em; margin-bottom: 0.4em; display: block; }
+
+    /* History timeline */
+    .timeline {
+      position: relative;
+      margin-top: 1.5em;
+      padding-left: 2em;
+      border-left: 3px solid #f39c12;
+    }
+    .timeline li {
+      list-style: none;
+      margin-bottom: 2em;
+      position: relative;
+    }
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: -2.55em;
+      top: 0.4em;
+      width: 14px;
+      height: 14px;
+      background: #c0392b;
+      border: 3px solid #f39c12;
+      border-radius: 50%;
+    }
+    .timeline .time { font-weight: 700; color: #c0392b; }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5em;
+      margin-top: 1.5em;
+    }
+    .feature {
+      background: linear-gradient(145deg, #fff, #fef9f2);
+      border-radius: 12px;
+      padding: 1.8em;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .feature .icon { font-size: 3em; margin-bottom: 0.3em; }
+    .feature h3 { color: #c0392b; margin-bottom: 0.3em; }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5em;
+      margin-top: 1.5em;
+    }
+    .gallery .item {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .gallery .item .placeholder {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4em;
+    }
+    .gallery .item:nth-child(1) .placeholder { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+    .gallery .item:nth-child(2) .placeholder { background: linear-gradient(135deg, #fbc2eb, #a6c1ee); }
+    .gallery .item:nth-child(3) .placeholder { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
+    .gallery .item p { padding: 1em 1.2em; font-weight: 500; }
+
+    /* Culture */
+    .culture-quote {
+      background: linear-gradient(135deg, #c0392b, #e74c3c);
+      color: #fff;
+      border-radius: 12px;
+      padding: 2.5em;
+      margin-top: 1.5em;
+      font-size: 1.3em;
+      text-align: center;
+      font-style: italic;
+      position: relative;
+    }
+    .culture-quote::before {
+      content: "\201C";
+      font-size: 5em;
+      position: absolute;
+      top: -0.1em;
+      left: 0.3em;
+      opacity: 0.3;
+      font-family: Georgia, serif;
+    }
+
+    /* Footer */
+    footer {
+      background: #2c2c2c;
+      color: #ccc;
+      text-align: center;
+      padding: 2.5em 1em;
+      margin-top: 3em;
+    }
+    footer a { color: #f39c12; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2em; }
+      .intro-grid { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+      nav ul { gap: 0.8em; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>烙馍网</h1>
+  <p>传承千年麦香，连接万家味道 —— 烙馍文化的数字家园</p>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#about">简介</a></li>
+    <li><a href="#history">历史</a></li>
+    <li><a href="#features">特色</a></li>
+    <li><a href="#gallery">风采</a></li>
+    <li><a href="#culture">文化</a></li>
+  </ul>
+</nav>
+
+<section id="about">
+  <h2>简介</h2>
+  <p>烙馍网是一个专注于烙馍文化传承与推广的综合性平台。烙馍，这一源自中国北方地区的传统面食，承载着深厚的历史文化底蕴和浓浓的乡愁记忆。我们致力于让更多人了解烙馍、学会做烙馍、爱上烙馍。</p>
+  <div class="intro-grid">
+    <div class="card">
+      <span class="emoji">🌾</span>
+      <h3>什么是烙馍？</h3>
+      <p>烙馍是一种用铁鏊子烙制的薄饼，主要流传于江苏北部、安徽北部、河南东部及山东西南部等地区。它以小麦面粉为原料，经和面、醒面、擀制后在鏊子上烙制而成，薄如纸而柔韧筋道。</p>
+    </div>
+    <div class="card">
+      <span class="emoji">🎯</span>
+      <h3>我们的使命</h3>
+      <p>烙馍网通过图文教程、食谱分享、文化故事和社区互动，搭建一个烙馍爱好者交流的平台。无论是想学做烙馍的新手，还是思念家乡味道的游子，都能在这里找到归属感。</p>
+    </div>
+  </div>
+</section>
+
+<section id="history">
+  <h2>历史渊源</h2>
+  <ul class="timeline">
+    <li>
+      <span class="time">汉代</span>
+      <p>烙馍的雏形可追溯至汉代。据史料记载，当时已有类似的面食制作方式，用石板或铁板加热烙制面饼，是最早的烙馍形态。</p>
+    </li>
+    <li>
+      <span class="time">唐宋时期</span>
+      <p>烙馍制作技艺日趋成熟，成为民间百姓日常主食之一。鏊子的广泛使用使得烙馍更加薄而均匀，口感大幅提升。</p>
+    </li>
+    <li>
+      <span class="time">明清时期</span>
+      <p>烙馍随人口迁徙传播至全国各地，不同地区形成了各具特色的制作方法和食用方式，如卷菜烙馍、鸡蛋烙馍等。</p>
+    </li>
+    <li>
+      <span class="time">当代</span>
+      <p>烙馍被列入非物质文化遗产名录，各地开始重视对烙馍制作技艺的保护与传承。烙馍网的创立正是为了以数字化方式延续这份传统。</p>
+    </li>
+  </ul>
+</section>
+
+<section id="features">
+  <h2>平台特色</h2>
+  <div class="features">
+    <div class="feature">
+      <div class="icon">📖</div>
+      <h3>图文教程</h3>
+      <p>从和面到烙制，详细步骤配以高清图片，零基础也能轻松学会烙馍。</p>
+    </div>
+    <div class="feature">
+      <div class="icon">👨‍🍳</div>
+      <h3>食谱大全</h3>
+      <p>汇集全国各地烙馍吃法：卷馓子、卷土豆丝、卷鸡蛋……百余种吃法任你选。</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🏘️</div>
+      <h3>家乡故事</h3>
+      <p>听各地烙馍传承人讲述与烙馍有关的记忆，感受浓浓的乡愁与人情味。</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🤝</div>
+      <h3>社区互动</h3>
+      <p>加入烙馍爱好者社区，晒作品、交流经验、参加线上烙馍制作大赛。</p>
+    </div>
+    <div class="feature">
+      <div class="icon">📍</div>
+      <h3>烙馍地图</h3>
+      <p>标注全国各地正宗烙馍店铺和摊位，走到哪里都能找到家乡的味道。</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🛒</div>
+      <h3>精选好物</h3>
+      <p>推荐正宗鏊子、优质面粉和各地烙馍半成品，在家也能享受地道美味。</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>烙馍风采</h2>
+  <div class="gallery">
+    <div class="item">
+      <div class="placeholder">🫓</div>
+      <p>刚出锅的烙馍，薄如纸、韧如皮，散发着淡淡的麦香</p>
+    </div>
+    <div class="item">
+      <div class="placeholder">🥘</div>
+      <p>烙馍卷菜，百搭美食——万物皆可卷的包容之道</p>
+    </div>
+    <div class="item">
+      <div class="placeholder">👩‍🍳</div>
+      <p>鏊前擀烙，手艺传承——一双巧手烙出千年味道</p>
+    </div>
+  </div>
+</section>
+
+<section id="culture">
+  <h2>文化传承</h2>
+  <div class="culture-quote">
+    烙馍不仅是一种食物，更是一种文化的符号、乡愁的寄托。一张小小的烙馍，卷进去的是菜，卷出来的是家的味道。
+  </div>
+  <p style="margin-top:1.5em;">
+    烙馍承载着黄淮流域数千年的饮食文化记忆。它的制作技艺是祖辈传下来的智慧结晶，它的味道是无数在外游子最思念的家乡味道。烙馍网希望通过互联网的力量，让这一传统美食文化在数字时代焕发新的生机，让更多人——无论身在何处——都能感受到烙馍带来的温暖与美好。
+  </p>
+</section>
+
+<footer>
+  <p>烙馍网 &copy; 2026 | 传承千年麦香，连接万家味道</p>
+  <p style="margin-top:0.5em;">联系我们：<a href="mailto:coupon@luomor.com">coupon@luomor.com</a></p>
+</footer>
+
+</body>
+</html>
