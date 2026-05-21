@@ -30,6 +30,3 @@ git add . && git commit -m "your message" && git push
 ## 运营信息
 
 - 域名：luomor.com
-- 服务器：CentOS
-- 静态目录：`/usr/share/doc/HTML`
-- 主题：基于 Puock（WordPress）构建
